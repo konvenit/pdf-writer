@@ -9,18 +9,20 @@
 #
 # $Id: writer.rb 202 2008-03-16 23:30:11Z sandal $
 #++
+
 require 'thread'
 require 'open-uri'
 
 require 'transaction/simple'
 require 'color'
+require 'pdf/core_ext/mutex'
 
-  # A class to provide the core functionality to create a PDF document
-  # without any requirement for additional modules.
+# A class to provide the core functionality to create a PDF document
+# without any requirement for additional modules.
 module PDF
   class Writer
       # The version of PDF::Writer.
-    VERSION = '2.0.1'
+    VERSION = '2.0.2'
 
       # Escape the text so that it's safe for insertion into the PDF
       # document.
