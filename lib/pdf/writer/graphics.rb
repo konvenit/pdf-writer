@@ -44,6 +44,8 @@ end
   # Drawing operations return +self+ (the canvas) so that operations may be
   # chained.
 module PDF::Writer::Graphics
+    PDF_FORMAT_STR  = "%.3f %.3f %.3f %s"
+  
     # Close the current path by appending a straight line segment from the
     # drawing point to the starting point of the path. If the path is
     # closed, this does nothing. This operator terminates the current
@@ -490,7 +492,8 @@ module PDF::Writer::Graphics
   def fill_color!(color = nil)
     if color
       @current_fill_color = color
-      add_content "\n#{@current_fill_color.pdf_fill}"
+      color_str = PDF_FORMAT_STR % [ color.r, color.g, color.b, "rg" ]
+      add_content "\n#{color_str}"
     end
   end
 
@@ -509,7 +512,8 @@ module PDF::Writer::Graphics
   def stroke_color!(color = nil)
     if color
       @current_stroke_color = color
-      add_content "\n#{@current_stroke_color.pdf_stroke}"
+      color_str = PDF_FORMAT_STR % [ color.r, color.g, color.b, "RG" ]
+      add_content "\n#{color_str}"
     end
   end
 
