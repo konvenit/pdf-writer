@@ -15,6 +15,7 @@ require 'open-uri'
 
 require 'transaction/simple'
 require 'color'
+require 'color/rgb/colors'
 require 'pdf/core_ext/mutex'
 
 # A class to provide the core functionality to create a PDF document
