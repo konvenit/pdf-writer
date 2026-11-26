@@ -9,6 +9,7 @@ Gem::Specification.new do |s|
   s.authors  = ["Austin Ziegler","Ken Collins"]
   s.autorequire       = ["pdf/writer"]
   s.require_paths     = ["lib"]
+  s.required_ruby_version = ">= 4.0"
   s.bindir            = "bin"
   s.executables       = ["techbook"]
   s.add_dependency('color', '>= 1.4.0')
