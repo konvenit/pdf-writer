@@ -14,6 +14,9 @@ Gem::Specification.new do |s|
   s.executables       = ["techbook"]
   s.add_dependency('color', '>= 1.4.0')
   s.add_dependency('transaction-simple', '~> 1.3')
+  # Bundled gems, no longer default gems, since Ruby 3.4 and 4.0.
+  s.add_dependency('ostruct')
+  s.add_dependency('rexml')
   s.files = [
     "README",
     "LICENCE",
