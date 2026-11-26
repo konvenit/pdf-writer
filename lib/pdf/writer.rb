@@ -23,7 +23,7 @@ require 'pdf/core_ext/mutex'
 module PDF
   class Writer
       # The version of PDF::Writer.
-    VERSION = '2.0.2'
+    VERSION = '3.0.0'
 
       # Escape the text so that it's safe for insertion into the PDF
       # document.
