@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name     = "pdf-writer"
-  s.version  = "2.0.2"
+  s.version  = "3.0.0"
   s.date     = "2009-05-19"
   s.summary  = "A pure Ruby PDF document creation library."
   s.email    = "ken@metaskills.net"
@@ -9,10 +9,14 @@ Gem::Specification.new do |s|
   s.authors  = ["Austin Ziegler","Ken Collins"]
   s.autorequire       = ["pdf/writer"]
   s.require_paths     = ["lib"]
+  s.required_ruby_version = ">= 4.0"
   s.bindir            = "bin"
   s.executables       = ["techbook"]
   s.add_dependency('color', '>= 1.4.0')
   s.add_dependency('transaction-simple', '~> 1.3')
+  # Bundled gems, no longer default gems, since Ruby 3.4 and 4.0.
+  s.add_dependency('ostruct')
+  s.add_dependency('rexml')
   s.files = [
     "README",
     "LICENCE",

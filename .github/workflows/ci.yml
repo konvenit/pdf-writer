@@ -1,0 +1,44 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - master
+  # Every pull request, not only those against master: a stacked PR whose base
+  # is another feature branch has to be checked as well.
+  pull_request:
+
+jobs:
+  scan:
+    name: Gitleaks
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITLEAKS_LICENSE: ${{ secrets.GITLEAKS_LICENSE }}
+
+  test:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        ruby:
+          - "4.0"
+    name: Ruby ${{ matrix.ruby }} test
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby }}
+          bundler-cache: true
+
+      # The Rakefile's release tasks need libraries long gone, so the tests run without rake.
+      - name: Run the tests
+        run: bundle exec ruby -Ilib -Itest -e 'Dir["./test/test_*.rb"].each { |file| require file }'

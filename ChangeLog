@@ -1,5 +1,11 @@
 = PDF::Writer Change Log
 
+== PDF::Writer 3.0.0: November 26, 2026
+* Ruby 4.0 is required.
+    o No string literal is changed in place any more
+    o Depends on rexml and ostruct, which are bundled gems on Ruby 4.0
+    o The tests run with Minitest
+
 == PDF::Writer 1.3.0: August 16, 2013
 * Ruby 2.0 compatibility.
     o ImageInfo fixes encoding issue

@@ -1,4 +1,4 @@
-require "test/helper"
+require "helper"
 
 describe "Page Numbering" do
   
@@ -7,7 +7,7 @@ describe "Page Numbering" do
   end
   
   it "should start with a current page = 1" do
-    @pdf.current_page_number.should == 1
+    _(@pdf.current_page_number).must_equal 1
   end   
   
 end
